@@ -17,71 +17,59 @@ async function seed() {
     await Review.deleteMany({});
     await User.deleteMany({});
 
-    // Create sample users
-    const users = await User.insertMany([
-      {
-        username: "reader01",
-        email: "reader01@example.com",
-        password: "hashedpassword01", // replace with hashed values in real use
-        isAdmin: false,
-      },
-      {
-        username: "adminUser",
-        email: "admin@latracal.com",
-        password: "hashedadminpw",
-        isAdmin: true,
-      },
-    ]);
 
     // Create sample books
     const books = await Book.insertMany([
       {
-        title: "The Alchemist",
-        author: "Paulo Coelho",
-        genre: ["Fiction", "Philosophy"],
-        description: "A philosophical story about following your dreams.",
-        coverImage: "https://i.imgur.com/sJ3CT4V.gif",
-        averageRating: 4.2,
+        title: "Thinking, Fast and Slow",
+        author: "Daniel Kahneman",
+        genre: ["Psychology", "Non-fiction"],
+        description: "Explores the dual systems that drive the way we think.",
+        coverImage: "https://m.media-amazon.com/images/I/71f6DceqZAL.jpg",
+        averageRating: 4.3,
       },
       {
-        title: "Atomic Habits",
-        author: "James Clear",
-        genre: ["Self-help", "Psychology"],
-        description: "An easy and proven way to build good habits and break bad ones.",
-        coverImage: "https://i.imgur.com/OuEhx2r.jpg",
-        averageRating: 4.7,
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        genre: ["Fiction", "Classic"],
+        description: "A story of racial injustice and childhood in the Deep South.",
+        coverImage: "https://m.media-amazon.com/images/I/81gepf1eMqL._UF1000,1000_QL80_.jpg",
+        averageRating: 4.8,
       },
       {
-        title: "Sapiens",
-        author: "Yuval Noah Harari",
-        genre: ["Non-fiction", "History"],
-        description: "A brief history of humankind.",
-        coverImage: "https://i.imgur.com/E0y60W8.jpg",
-        averageRating: 4.5,
+        title: "Deep Work",
+        author: "Cal Newport",
+        genre: ["Self-help", "Productivity"],
+        description: "Rules for focused success in a distracted world.",
+        coverImage: "https://m.media-amazon.com/images/I/81JJ7fyyKyS.jpg",
+        averageRating: 4.4,
+      },
+      {
+        title: "1984",
+        author: "George Orwell",
+        genre: ["Fiction", "Dystopian"],
+        description: "A chilling prophecy about the future of a totalitarian world.",
+        coverImage: "https://m.media-amazon.com/images/I/51BIA4rraeL._UF1000,1000_QL80_.jpg",
+        averageRating: 4.6,
+      },
+      {
+        title: "The Subtle Art of Not Giving a F*ck",
+        author: "Mark Manson",
+        genre: ["Self-help", "Philosophy"],
+        description: "A counterintuitive approach to living a good life.",
+        coverImage: "https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg",
+        averageRating: 4.0,
+      },
+      {
+        title: "The Midnight Library",
+        author: "Matt Haig",
+        genre: ["Fantasy", "Philosophy"],
+        description: "A woman explores alternate lives through a magical library.",
+        coverImage: "https://m.media-amazon.com/images/I/81J6APjwxlL.jpg",
+        averageRating: 4.1,
       },
     ]);
 
-    // Create sample reviews
-    await Review.insertMany([
-      {
-        bookId: books[0]._id,
-        userId: users[0]._id,
-        rating: 5,
-        comment: "Absolutely life-changing!",
-      },
-      {
-        bookId: books[1]._id,
-        userId: users[0]._id,
-        rating: 4,
-        comment: "Very practical advice and actionable tips.",
-      },
-      {
-        bookId: books[2]._id,
-        userId: users[1]._id,
-        rating: 4,
-        comment: "Mind-opening and deeply insightful.",
-      },
-    ]);
 
     console.log("✅ Seed data created successfully!");
     process.exit(0);
