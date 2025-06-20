@@ -7,7 +7,7 @@ export default function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav className="w-full border-b-4 border-black bg-yellow-100 py-4 px-6 shadow-md relative z-50">
+    <nav className="w-full sticky border-b-4 border-black bg-yellow-100 py-4 px-6 shadow-md z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto relative">
         {/* Left Nav */}
         <div className="flex gap-4 text-sm font-mono">

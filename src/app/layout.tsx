@@ -1,17 +1,20 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fredoka, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Providers from "@/components/Providers"; // 👈 import your wrapper
+import Providers from "@/components/Providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fredoka = Fredoka({
   subsets: ["latin"],
+  variable: "--font-fredoka",
+  weight: ["400", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
   subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["300", "400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -27,11 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#fefcf3] text-black`}
+        className={`${fredoka.variable} ${poppins.variable} font-sans antialiased bg-[#fefcf3] text-black`}
       >
         <Providers>
           <Navbar />
-          {children}
+          <main className="px-4 md:px-8 lg:px-20 pt-6">{children}</main>
         </Providers>
       </body>
     </html>
