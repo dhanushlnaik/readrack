@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import Review from "@/models/Review";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
+
 
 export async function GET(req: Request) {
   await dbConnect();
@@ -19,6 +20,10 @@ export async function POST(req: Request) {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { bookId, rating, comment } = await req.json();
+
+  if (!session.user || !session.user.id) {
+    return NextResponse.json({ error: "User information missing" }, { status: 400 });
+  }
 
   const review = await Review.create({
     bookId,
