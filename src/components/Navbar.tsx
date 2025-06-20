@@ -28,7 +28,9 @@ export default function Navbar() {
           {!session ? (
             <Link href="/auth/login" className="hover:underline hover:text-purple-700">Login</Link>
           ) : (
-            <Link href={`/profile/${session.user.id}`} className="hover:underline hover:text-purple-700">Profile</Link>
+            session.user ? (
+              <Link href={`/profile/${session.user.id}`} className="hover:underline hover:text-purple-700">Profile</Link>
+            ) : null
           )}
         </div>
       </div>
