@@ -29,7 +29,7 @@ export default function BooksPage() {
   }, [genre]);
 
   return (
-    <div className="p-6 min-h-screen bg-yellow-50 font-[Comic_Sans_MS]">
+    <div className="p-6 min-h-screen bg-yellow-50">
       <h1 className="text-5xl font-bold text-center text-purple-800 drop-shadow mb-10 underline decoration-wavy decoration-pink-500">
         Explore ReadRack 📚
       </h1>

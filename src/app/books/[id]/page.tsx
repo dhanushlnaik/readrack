@@ -27,7 +27,7 @@ export default function BookDetail() {
   useEffect(() => {
     const fetchBookAndReviews = async () => {
       const b = await fetch(`/api/books/${id}`).then((res) => res.json());
-      const r = await fetch(`/api/reviews?bookId=${id}`).then((res) => res.json());
+      const r = await fetch(`/api/review?bookId=${id}`).then((res) => res.json());
       setBook(b);
       setReviews(r);
     };
@@ -36,7 +36,7 @@ export default function BookDetail() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch("/api/reviews", {
+    const res = await fetch("/api/review", {
       method: "POST",
       body: JSON.stringify({ bookId: id, comment, rating }),
       headers: { "Content-Type": "application/json" },
